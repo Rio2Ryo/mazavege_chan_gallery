@@ -64,6 +64,13 @@ body {
 /* スムーズスクロール */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 /* モバイルタップハイライトの削除 */
