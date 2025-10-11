@@ -53,7 +53,7 @@ export default function Hero() {
               alt="Mother Vegetable Logo"
               width={140}
               height={140}
-              className="mx-auto"
+              className="mx-auto w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36"
               priority
             />
           </div>
@@ -76,7 +76,7 @@ export default function Hero() {
 
 
         {/* Description - Not in Box */}
-        <div className="max-w-4xl mx-auto mb-12 mt-20 px-4">
+        <div className="max-w-4xl mx-auto mb-12 mt-16 px-4">
           <div className="space-y-3">
             <p className="text-lg md:text-xl text-[#4ade80] leading-relaxed">
               {t({
@@ -100,7 +100,7 @@ export default function Hero() {
         </div>
 
       {/* Mother Vegetable Image */}
-<div className="w-[80%] sm:w-[85%] md:max-w-3xl mx-auto mb-12 px-0 sm:px-4">
+<div className="w-[80%] sm:w-[85%] md:max-w-3xl mx-auto mb-40 mt-40 px-0 sm:px-4">
   <div className="relative overflow-visible">
     <Image
       src={language === 'EN' ? "/project-overview_en.png" : "/project-overview_en.png"}
