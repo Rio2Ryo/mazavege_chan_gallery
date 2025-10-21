@@ -76,7 +76,7 @@ directly connected to Mother Vegetable factories, providing core utilities.`
 
         {/* Pre-registration Section */}
         <div className="text-center" id="registration">
-          <div className="bg-gradient-to-b from-green-500/10 to-green-700/10 border border-green-500/20 rounded-2xl p-12 max-w-3xl mx-auto mt-16">
+          <div className="bg-gradient-to-b from-green-500/10 to-green-700/10 border border-green-500/20 rounded-2xl p-12 max-w-3xl mx-auto mt-14">
             <h3 className="text-3xl font-bold text-white text-center mb-8">
               {t({ JP: '登録受付中', EN: 'Registration Open' })}
             </h3>
