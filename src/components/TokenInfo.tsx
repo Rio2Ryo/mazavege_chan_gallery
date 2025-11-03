@@ -62,6 +62,10 @@ directly connected to Mother Vegetable factories, providing core utilities.\nLis
               <p className="text-gray-400 text-sm mb-2">{t({ JP: 'トークン規格', EN: 'Token Standard' })}</p>
               <p className="text-white font-bold text-lg">ERC-20</p>
             </div>
+             <div className="text-center">
+              <p className="text-gray-400 text-sm mb-2">{t({ JP: 'Listing date', EN: '上場日' })}</p>
+              <p className="text-white font-bold text-lg">November 11, 2025 on 11:00 (UTC)</p>
+            </div>
             <div className="text-center">
               <p className="text-gray-400 text-sm mb-2">{t({ JP: '総発行量', EN: 'Total Supply' })}</p>
               <p className="text-white font-bold text-lg">10,000,000,000 (10 billion)</p>
