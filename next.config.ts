@@ -24,6 +24,20 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+
+  async rewrites() {
+    return [
+      // A（mothervegetablemenu.vercel.app）を /achieve-howto 配下にプロキシ
+      {
+        source: "/achieve-howto",
+        destination: "https://mothervegetablemenu.vercel.app/achieve-howto",
+      },
+      {
+        source: "/achieve-howto/:path*",
+        destination: "https://mothervegetablemenu.vercel.app/achieve-howto/:path*",
+      },
+    ];
+  },
 };
 
 export default nextConfig;
