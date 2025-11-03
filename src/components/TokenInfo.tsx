@@ -29,9 +29,9 @@ export default function TokenInfo() {
               JP: `MOTHER VEGETABLE Token（MVT）は
 マザーベジタブルファクトリーと直接接続された
 ユーティリティトークンとして機能し、
-核心的ユーティリティを提供します。`,
+核心的ユーティリティを提供します。\n上場日：2025年11月11日 11:00（協定世界時）`,
               EN: `MOTHER VEGETABLE Token (MVT) functions as a utility token
-directly connected to Mother Vegetable factories, providing core utilities.`
+directly connected to Mother Vegetable factories, providing core utilities.\nListing date : 11:00 on November 11, 2025 (UTC)`
             })}
           </p>
           <div className="mt-8">
@@ -85,7 +85,7 @@ directly connected to Mother Vegetable factories, providing core utilities.`
             </p>
             <div className="flex justify-center">
               <button
-                onClick={(e) => e.preventDefault()}
+                onClick={() => window.location.href = 'https://www.mothervegetable.net/'}
                 className="bg-gradient-to-r from-green-400 to-green-700 hover:from-green-600 hover:to-green-800 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
               >
                 {t({ JP: '登録する', EN: 'Register' })}
