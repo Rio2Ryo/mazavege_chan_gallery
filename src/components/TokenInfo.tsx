@@ -31,7 +31,7 @@ export default function TokenInfo() {
 ユーティリティトークンとして機能し、
 核心的ユーティリティを提供します。\n上場日：2025年11月11日 11:00（協定世界時）`,
               EN: `MOTHER VEGETABLE Token (MVT) functions as a utility token
-directly connected to Mother Vegetable factories, providing core utilities.\nListing date : 11:00 on November 11, 2025 (UTC)`
+directly connected to Mother Vegetable factories, providing core utilities.\nListing date : at 11:00 on November 11, 2025 (UTC)`
             })}
           </p>
           <div className="mt-8">
