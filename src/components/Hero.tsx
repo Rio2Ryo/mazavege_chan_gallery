@@ -105,7 +105,6 @@ export default function Hero() {
 
           <div className="w-40 md:w-48 h-1.5 bg-gradient-to-r from-transparent via-green-400 to-transparent mx-auto rounded-full mt-6 opacity-80"></div>
 
-          <p className="text-green-400 font-bold text-lg sm:text-xl md:text-3xl lg:text-4xl mt-4">{countdown || 'Calculating...'}</p>
         </div>
 
 
