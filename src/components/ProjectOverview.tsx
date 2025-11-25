@@ -43,18 +43,28 @@ export default function ProjectOverview() {
           <div className="text-xs md:text-base text-gray-300 max-w-5xl mx-auto">
             {/* Desktop View */}
             <p className="hidden md:block leading-[2] whitespace-pre-line">
-              {t({
-                JP: `MOTHER VEGETABLE PROJECTは\n2つのオンリーワン事業を中心として地球とすべての生命の回復を目指す世界唯一のプロジェクトです。\n\nこのプロセスにおいて、各施設は24時間365日CO2を吸収し酸素を生成することで大気を浄化し、\n同時に生成されるマザーベジタブル製品および魚貝類の養殖業により、人間と生物の健康向上に貢献します。\n\nまたその施設を世界各地に展開することで、さらに8つの産業分野に発展します。`,
-                EN: `The MOTHER VEGETABLE PROJECT is\nthe world's only project that aims to restore the Earth and all life,\ncentered around two one-of-a-kind businesses.\n\nIn this process, each facility purifies the atmosphere by absorbing CO₂\nand generating oxygen 24 hours a day, 365 days a year,\nwhile simultaneously contributing to improving the health of humans\nand living organisms through Mother Vegetable products and the aquaculture of fish and shellfish.\n\nFurthermore, by expanding these facilities around the world,\nit will develop into eight additional industrial sectors.`
-              })}
+              {language === 'JP' ? (
+                <>
+                  MOTHER VEGETABLE PROJECTは{'\n'}2つのオンリーワン事業を中心として地球とすべての生命の回復を目指す世界唯一のプロジェクトです。{'\n\n'}このプロセスにおいて、各施設は24時間365日CO<sub>2</sub>を吸収し酸素を生成することで大気を浄化し、{'\n'}同時に生成されるマザーベジタブル製品および魚貝類の養殖業により、人間と生物の健康向上に貢献します。{'\n\n'}またその施設を世界各地に展開することで、さらに8つの産業分野に発展します。
+                </>
+              ) : (
+                <>
+                  The MOTHER VEGETABLE PROJECT is{'\n'}the world's only project that aims to restore the Earth and all life,{'\n'}centered around two one-of-a-kind businesses.{'\n\n'}In this process, each facility purifies the atmosphere by absorbing CO<sub>2</sub>{'\n'}and generating oxygen 24 hours a day, 365 days a year,{'\n'}while simultaneously contributing to improving the health of humans{'\n'}and living organisms through Mother Vegetable products and the aquaculture of fish and shellfish.{'\n\n'}Furthermore, by expanding these facilities around the world,{'\n'}it will develop into eight additional industrial sectors.
+                </>
+              )}
             </p>
 
             {/* Mobile View */}
             <p className="block md:hidden leading-[2] whitespace-pre-line">
-              {t({
-               JP: `MOTHER VEGETABLE PROJECTは\n2つのオンリーワン事業を中心として\n地球とすべての生命の回復を目指す\n世界唯一のプロジェクトです。\n\nこのプロセスにおいて、\n各施設は24時間365日CO2を吸収し\n酸素を生成することで大気を浄化し、\n同時に生成されるマザーベジタブル製品\nおよび魚貝類の養殖業により、\n人間と生物の健康向上に貢献します。\n\nまたその施設を世界各地に展開することで、\nさらに8つの産業分野に発展します。`,
-                EN: `The MOTHER VEGETABLE PROJECT is\nthe world's only project that aims to restore\nthe Earth and all life,\ncentered around two one-of-a-kind businesses.\n\nIn this process,\neach facility purifies the atmosphere\nby absorbing CO₂ and generating oxygen\n24 hours a day, 365 days a year,\nwhile simultaneously contributing to\nimproving the health of humans\nand living organisms through\nMother Vegetable products\nand the aquaculture of fish and shellfish.\n\nFurthermore, by expanding\nthese facilities around the world,\nit will develop into\neight additional industrial sectors.`
-              })}
+              {language === 'JP' ? (
+                <>
+                  MOTHER VEGETABLE PROJECTは{'\n'}2つのオンリーワン事業を中心として{'\n'}地球とすべての生命の回復を目指す{'\n'}世界唯一のプロジェクトです。{'\n\n'}このプロセスにおいて、{'\n'}各施設は24時間365日CO<sub>2</sub>を吸収し{'\n'}酸素を生成することで大気を浄化し、{'\n'}同時に生成されるマザーベジタブル製品{'\n'}および魚貝類の養殖業により、{'\n'}人間と生物の健康向上に貢献します。{'\n\n'}またその施設を世界各地に展開することで、{'\n'}さらに8つの産業分野に発展します。
+                </>
+              ) : (
+                <>
+                  The MOTHER VEGETABLE PROJECT is{'\n'}the world's only project that aims to restore{'\n'}the Earth and all life,{'\n'}centered around two one-of-a-kind businesses.{'\n\n'}In this process,{'\n'}each facility purifies the atmosphere{'\n'}by absorbing CO<sub>2</sub> and generating oxygen{'\n'}24 hours a day, 365 days a year,{'\n'}while simultaneously contributing to{'\n'}improving the health of humans{'\n'}and living organisms through{'\n'}Mother Vegetable products{'\n'}and the aquaculture of fish and shellfish.{'\n\n'}Furthermore, by expanding{'\n'}these facilities around the world,{'\n'}it will develop into{'\n'}eight additional industrial sectors.
+                </>
+              )}
             </p>
           </div>
         </div>
@@ -210,20 +220,39 @@ we offer the following three types of Mother Vegetable products:`
                   </div>
 
                   <div className="space-y-2">
-                    <p className="text-green-400 font-semibold text-sm md:text-base">{t({ JP: '①CO2 offset', EN: '①CO2 offset' })}</p>
-                    <p className="text-white mb-3 text-sm md:text-base">{t({ JP: 'マザーベジタブル生産によるCO2の吸収（天然スギの700倍）およびO2の排出により小さな地球を再現。', EN: 'Recreating a small Earth through CO2 absorption (700 times that of natural cedar) and O2 emission by Mother Vegetable production.' })}</p>
+                    <p className="text-green-400 font-semibold text-sm md:text-base">①CO<sub>2</sub> offset</p>
+                    <p className="text-white mb-3 text-sm md:text-base">
+                      {language === 'JP' ? (
+                        <>マザーベジタブル生産によるCO<sub>2</sub>の吸収（天然スギの700倍）およびO<sub>2</sub>の排出により小さな地球を再現。</>
+                      ) : (
+                        <>Recreating a small Earth through CO<sub>2</sub> absorption (700 times that of natural cedar) and O<sub>2</sub> emission by Mother Vegetable production.</>
+                      )}
+                    </p>
 
                     <p className="text-green-400 font-semibold text-sm md:text-base">{t({ JP: '②ZERO Carbon Energy', EN: '②ZERO Carbon Energy' })}</p>
-                    <p className="text-white mb-3 text-sm md:text-base">{t({ JP: '外部電力、化石燃料などCO2を排出するエネルギーを一切使用しなく、小さな地球を再現。', EN: 'Recreating a small Earth without relying on any CO₂-emitting energy sources, including external electricity or fossil fuels.' })}</p>
+                    <p className="text-white mb-3 text-sm md:text-base">
+                      {language === 'JP' ? (
+                        <>外部電力、化石燃料などCO<sub>2</sub>を排出するエネルギーを一切使用しなく、小さな地球を再現。</>
+                      ) : (
+                        <>Recreating a small Earth without relying on any CO<sub>2</sub>-emitting energy sources, including external electricity or fossil fuels.</>
+                      )}
+                    </p>
 
-                    <p className="text-green-400 font-semibold text-sm md:text-base">{t({ JP: '③カーボンオフセットの試算表', EN: '③CO2 offset Estimation Table' })}</p>
+                    <p className="text-green-400 font-semibold text-sm md:text-base">
+                      {language === 'JP' ? (
+                        <>③カーボンオフセットの試算表</>
+                      ) : (
+                        <>③CO<sub>2</sub> offset Estimation Table</>
+                      )}
+                    </p>
                     <p className="text-white text-sm md:text-base">{t({ JP: 'SEF 1 unit / 26m x 16m x 10階建 は面積にすると約0.5 ヘクタール。', EN: 'SEF 1 unit / 26m x 16m x 10 layers has an area of about 0.5 hectares.' })}</p>
 
                     <p className="leading-relaxed text-sm md:text-base whitespace-pre-line">
-                      {t({
-                        JP: `一般的な0.5ヘクタールの天然スギのCO2吸収量は年間約4ton\nSEFはその700倍のCO2吸収量により年間約2,800tonとなる。`,
-                        EN: `A typical 0.5 hectare natural cedar forest absorbs about 4 tons of CO2 per year\nSEF absorbs 700 times more CO2, resulting in about 2,800 tons per year.`
-                      })}
+                      {language === 'JP' ? (
+                        <>一般的な0.5ヘクタールの天然スギのCO<sub>2</sub>吸収量は年間約4ton{'\n'}SEFはその700倍のCO<sub>2</sub>吸収量により年間約2,800tonとなる。</>
+                      ) : (
+                        <>A typical 0.5 hectare natural cedar forest absorbs about 4 tons of CO<sub>2</sub> per year{'\n'}SEF absorbs 700 times more CO<sub>2</sub>, resulting in about 2,800 tons per year.</>
+                      )}
                     </p>
                     <p className="leading-relaxed text-sm md:text-base whitespace-pre-line">
                       {t({
