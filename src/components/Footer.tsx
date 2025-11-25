@@ -19,9 +19,9 @@ export default function Footer() {
 
   return (
     <footer className="bg-black">
-      <div className="container rounded-xl px-8 pt-14 mb-1 mx-auto">
+      <div className="container rounded-xl px-8 pt-6 mb-1 mx-auto">
         {/* Decorative underline */}
-        <div className="w-full h-1 bg-gradient-to-r from-transparent via-[#25C760] to-transparent mx-auto mb-16"></div>
+        <div className="w-full h-1 bg-gradient-to-r from-transparent via-[#25C760] to-transparent mx-auto mb-8"></div>
         {/* Logo */}
         <div className="flex justify-center mb-4">
           <Image
@@ -102,7 +102,7 @@ export default function Footer() {
 
       {/* Legal Links & Copyright */}
       <div className="">
-        <div className="container mx-auto px-4 pt-1 pb-6">
+        <div className="container mx-auto px-4 pt-3 pb-6">
           <div className="text-center space-y-4">
 
             <div className="text-[#25C760] text-sm whitespace-pre-line">
