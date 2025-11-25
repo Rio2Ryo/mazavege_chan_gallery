@@ -34,10 +34,10 @@ export default function Footer() {
         </div>
 
         {/* Title */}
-        <h2 className="text-xs md:text-sm font-bold text-[#25C760] text-center mb-8">Mother Vegetable Group</h2>
+        <h2 className="text-xs md:text-sm font-bold text-[#25C760] text-center mb-4">Mother Vegetable Group</h2>
 
         {/* Countries Grid */}
-        <div className="grid grid-cols-9 grid-rows-2 gap-x-2 gap-y-4 mx-auto text-center">
+        <div className="grid grid-cols-9 grid-rows-2 gap-x-2 gap-y-2 mx-auto text-center max-w-[958px]">
           <div className="text-[#25C760] text-xs md:text-sm font-medium">Japan</div>
           <div className="text-[#25C760] text-xs md:text-sm font-medium">Switzerland</div>
           <div className="text-[#25C760] text-xs md:text-sm font-medium">Malaysia</div>
@@ -102,7 +102,7 @@ export default function Footer() {
 
       {/* Legal Links & Copyright */}
       <div className="">
-        <div className="container mx-auto px-4 py-6">
+        <div className="container mx-auto px-4 pt-2 pb-6">
           <div className="text-center space-y-4">
            
             <div className="text-[#25C760] text-sm whitespace-pre-line">
