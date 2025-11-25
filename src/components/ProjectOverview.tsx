@@ -201,7 +201,7 @@ we offer the following three types of Mother Vegetable products:`
 
                       <div className="w-full md:max-w-xs h-48 rounded-xl overflow-hidden shadow-lg">
                         <img
-                          src="/mv-factory-greenhouse.jpg"
+                          src="/architect.png"
                           alt="MOTHER VEGETABLEファクトリー建物"
                           className="w-full h-full object-cover"
                         />
@@ -210,13 +210,13 @@ we offer the following three types of Mother Vegetable products:`
                   </div>
 
                   <div className="space-y-2">
-                    <p className="text-green-400 font-semibold text-sm md:text-base">{t({ JP: '①Carbon Rebirth', EN: '①Carbon Rebirth' })}</p>
+                    <p className="text-green-400 font-semibold text-sm md:text-base">{t({ JP: '①Co2 offset', EN: '①Co2 offset' })}</p>
                     <p className="text-white mb-3 text-sm md:text-base">{t({ JP: 'マザーベジタブル生産によるCO2の吸収（天然スギの700倍）およびO2の排出により小さな地球を再現。', EN: 'Recreating a small Earth through CO2 absorption (700 times that of natural cedar) and O2 emission by Mother Vegetable production.' })}</p>
 
                     <p className="text-green-400 font-semibold text-sm md:text-base">{t({ JP: '②ZERO Carbon Energy', EN: '②ZERO Carbon Energy' })}</p>
                     <p className="text-white mb-3 text-sm md:text-base">{t({ JP: '外部電力、化石燃料などCO2を排出するエネルギーを一切使用しなく、小さな地球を再現。', EN: 'Recreating a small Earth without relying on any CO₂-emitting energy sources, including external electricity or fossil fuels.' })}</p>
 
-                    <p className="text-green-400 font-semibold text-sm md:text-base">{t({ JP: '③カーボンクレジットの試算表', EN: '③Carbon Credit Estimation Table' })}</p>
+                    <p className="text-green-400 font-semibold text-sm md:text-base">{t({ JP: '③カーボンオフセットの試算表', EN: '③Co2 offset Estimation Table' })}</p>
                     <p className="text-white text-sm md:text-base">{t({ JP: 'SEF 1 unit / 26m x 16m x 10階建 は面積にすると約0.5 ヘクタール。', EN: 'SEF 1 unit / 26m x 16m x 10 layers has an area of about 0.5 hectares.' })}</p>
 
                     <p className="leading-relaxed text-sm md:text-base whitespace-pre-line">
