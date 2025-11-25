@@ -37,7 +37,7 @@ export default function Footer() {
         <h2 className="text-xs md:text-sm font-bold text-[#25C760] text-center mb-3">Mother Vegetable Group</h2>
 
         {/* Countries Grid */}
-        <div className="grid grid-cols-5 md:grid-cols-9 gap-x-0 md:gap-x-2 gap-y-1 mx-auto text-center md:max-w-[960px]">
+        <div className="grid grid-cols-6 md:grid-cols-9 gap-x-0 md:gap-x-2 gap-y-1 mx-auto text-center md:max-w-[960px]">
           <div className="text-[#25C760] text-xs md:text-sm font-medium">Japan</div>
           <div className="text-[#25C760] text-xs md:text-sm font-medium">South Korea</div>
           <div className="text-[#25C760] text-xs md:text-sm font-medium">Hong Kong</div>
