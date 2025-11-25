@@ -37,27 +37,23 @@ export default function Footer() {
         <h2 className="text-xs md:text-sm font-bold text-[#25C760] text-center mb-8">Mother Vegetable Group</h2>
 
         {/* Countries Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-[4.5rem] mx-auto text-center">
+        <div className="grid grid-cols-2 grid-rows-9 grid-flow-col gap-x-[4.5rem] gap-y-6 mx-auto text-left max-w-2xl">
           <div className="text-[#25C760] text-xs md:text-sm font-medium">Japan</div>
           <div className="text-[#25C760] text-xs md:text-sm font-medium">Switzerland</div>
           <div className="text-[#25C760] text-xs md:text-sm font-medium">Malaysia</div>
           <div className="text-[#25C760] text-xs md:text-sm font-medium">Thailand</div>
-
           <div className="text-[#25C760] text-xs md:text-sm font-medium">Germany</div>
           <div className="text-[#25C760] text-xs md:text-sm font-medium">USA</div>
           <div className="text-[#25C760] text-xs md:text-sm font-medium">South Korea</div>
           <div className="text-[#25C760] text-xs md:text-sm font-medium">United Kingdom</div>
-
           <div className="text-[#25C760] text-xs md:text-sm font-medium">Singapore</div>
           <div className="text-[#25C760] text-xs md:text-sm font-medium">Mongolia</div>
           <div className="text-[#25C760] text-xs md:text-sm font-medium">Italy</div>
           <div className="text-[#25C760] text-xs md:text-sm font-medium">Brazil</div>
-
           <div className="text-[#25C760] text-xs md:text-sm font-medium">Hong Kong</div>
           <div className="text-[#25C760] text-xs md:text-sm font-medium">Indonesia</div>
           <div className="text-[#25C760] text-xs md:text-sm font-medium">Australia</div>
           <div className="text-[#25C760] text-xs md:text-sm font-medium">France</div>
-
           <div className="text-[#25C760] text-xs md:text-sm font-medium">Canada</div>
           <div className="text-[#25C760] text-xs md:text-sm font-medium">Peru</div>
         </div>
