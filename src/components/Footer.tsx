@@ -19,48 +19,47 @@ export default function Footer() {
 
   return (
     <footer className="bg-black">
-       <div className="container border border-green-500/20 rounded-xl px-8 py-14 mb-16 mx-auto">
+       <div className="container rounded-xl px-8 py-14 mb-16 mx-auto">
+         {/* Decorative underline */}
+        <div className="w-full h-1 bg-gradient-to-r from-transparent via-[#25C760] to-transparent mx-auto mb-16"></div>
         {/* Logo */}
         <div className="flex justify-center mb-4">
           <Image
             src="/mazavege_logo_midori.png"
             alt="Mother Vegetable Logo"
-            width={48}
-            height={48}
+            width={24}
+            height={24}
             className="w-12 h-12"
           />
         </div>
 
         {/* Title */}
-        <h2 className="text-2xl md:text-3xl font-bold text-[#25C760] text-center mb-8">Mother Vegetable Group</h2>
-
-        {/* Decorative underline */}
-        <div className="w-32 h-1 bg-gradient-to-r from-transparent via-[#25C760] to-transparent mx-auto mb-16"></div>
+        <h2 className="text-xs md:text-sm font-bold text-[#25C760] text-center mb-8">Mother Vegetable Group</h2>
 
         {/* Countries Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-[4.5rem] mx-auto text-center">
-          <div className="text-[#25C760] text-base md:text-xl font-medium">Japan</div>
-          <div className="text-[#25C760] text-base md:text-xl font-medium">Switzerland</div>
-          <div className="text-[#25C760] text-base md:text-xl font-medium">Malaysia</div>
-          <div className="text-[#25C760] text-base md:text-xl font-medium">Thailand</div>
+          <div className="text-[#25C760] text-xs md:text-sm font-medium">Japan</div>
+          <div className="text-[#25C760] text-xs md:text-sm font-medium">Switzerland</div>
+          <div className="text-[#25C760] text-xs md:text-sm font-medium">Malaysia</div>
+          <div className="text-[#25C760] text-xs md:text-sm font-medium">Thailand</div>
 
-          <div className="text-[#25C760] text-base md:text-xl font-medium">Germany</div>
-          <div className="text-[#25C760] text-base md:text-xl font-medium">USA</div>
-          <div className="text-[#25C760] text-base md:text-xl font-medium">South Korea</div>
-          <div className="text-[#25C760] text-base md:text-xl font-medium">United Kingdom</div>
+          <div className="text-[#25C760] text-xs md:text-sm font-medium">Germany</div>
+          <div className="text-[#25C760] text-xs md:text-sm font-medium">USA</div>
+          <div className="text-[#25C760] text-xs md:text-sm font-medium">South Korea</div>
+          <div className="text-[#25C760] text-xs md:text-sm font-medium">United Kingdom</div>
 
-          <div className="text-[#25C760] text-base md:text-xl font-medium">Singapore</div>
-          <div className="text-[#25C760] text-base md:text-xl font-medium">Mongolia</div>
-          <div className="text-[#25C760] text-base md:text-xl font-medium">Italy</div>
-          <div className="text-[#25C760] text-base md:text-xl font-medium">Brazil</div>
+          <div className="text-[#25C760] text-xs md:text-sm font-medium">Singapore</div>
+          <div className="text-[#25C760] text-xs md:text-sm font-medium">Mongolia</div>
+          <div className="text-[#25C760] text-xs md:text-sm font-medium">Italy</div>
+          <div className="text-[#25C760] text-xs md:text-sm font-medium">Brazil</div>
 
-          <div className="text-[#25C760] text-base md:text-xl font-medium">Hong Kong</div>
-          <div className="text-[#25C760] text-base md:text-xl font-medium">Indonesia</div>
-          <div className="text-[#25C760] text-base md:text-xl font-medium">Australia</div>
-          <div className="text-[#25C760] text-base md:text-xl font-medium">France</div>
+          <div className="text-[#25C760] text-xs md:text-sm font-medium">Hong Kong</div>
+          <div className="text-[#25C760] text-xs md:text-sm font-medium">Indonesia</div>
+          <div className="text-[#25C760] text-xs md:text-sm font-medium">Australia</div>
+          <div className="text-[#25C760] text-xs md:text-sm font-medium">France</div>
 
-          <div className="text-[#25C760] text-base md:text-xl font-medium">Canada</div>
-          <div className="text-[#25C760] text-base md:text-xl font-medium">Peru</div>
+          <div className="text-[#25C760] text-xs md:text-sm font-medium">Canada</div>
+          <div className="text-[#25C760] text-xs md:text-sm font-medium">Peru</div>
         </div>
        </div>
       {/* Main Footer Content 
@@ -110,7 +109,7 @@ export default function Footer() {
         <div className="container mx-auto px-4 py-6">
           <div className="text-center space-y-4">
            
-            <div className="text-white text-sm whitespace-pre-line">
+            <div className="text-[#25C760] text-sm whitespace-pre-line">
               {t({
                 JP: '© 2025 MOTHER VEGETABLE PROJECT.\nAll rights reserved.',
                 EN: '© 2025 MOTHER VEGETABLE PROJECT.\nAll rights reserved.'
