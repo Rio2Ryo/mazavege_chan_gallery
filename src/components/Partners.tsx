@@ -15,15 +15,7 @@ export default function Partners() {
   const { t } = useLanguage()
 
   const governmentPartners = [
-    {
-      name: t({ JP: "BioNexus ステータス企業", EN: "BioNexus Status Company" }),
-      subtitle: t({ JP: "マレーシア政府認可", EN: "Malaysian Government Approved" }),
-      description: t({
-        JP: "マレーシア政府の特別クラス・バイオテクノロジー企業として認定されており、バイオテクノロジー商業化の進歩のための実質的な財政的インセンティブ、税制優遇、制度的サポートへのアクセスを享受しています。",
-        EN: "Certified as a special class biotechnology company by the Malaysian government, enjoying access to substantial financial incentives, tax benefits, and institutional support for advancing biotechnology commercialization."
-      }),
-      image: "/bionexus-DbMz1jYi.jpeg"
-    },
+   
     {
       name: "ASEAN",
       subtitle: t({ JP: "東南アジア諸国連合", EN: "Association of Southeast Asian Nations" }),
