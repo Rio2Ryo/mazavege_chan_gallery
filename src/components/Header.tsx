@@ -59,6 +59,12 @@ export default function Header() {
               Athlete
             </button>
             <button
+              onClick={() => window.location.href = '/gallery'}
+              className="px-3 md:px-4 py-2 text-sm text-[#4ade80] hover:text-green-600 transition-all duration-300"
+            >
+              Gallery
+            </button>
+            <button
               onClick={() => setLanguage(language === 'EN' ? 'JP' : 'EN')}
               className="px-3 md:px-4 py-2 text-sm text-[#4ade80] hover:text-green-600 transition-all duration-300 border border-gray-600 rounded-md"
             >
