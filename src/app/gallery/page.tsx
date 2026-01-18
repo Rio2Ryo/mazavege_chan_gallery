@@ -80,8 +80,8 @@ const categories = [
   { id: 'other', label: { JP: 'その他', EN: 'Other' }, icon: '○' }
 ]
 
-// 動画カード（インライン再生対応）
-function VideoCard({ video, index }: { video: VideoItem; index: number }) {
+// 縦長動画カード（9:16対応）
+function VerticalVideoCard({ video, index }: { video: VideoItem; index: number }) {
   const { t } = useLanguage()
   const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(true)
@@ -119,9 +119,13 @@ function VideoCard({ video, index }: { video: VideoItem; index: number }) {
       className="group cursor-pointer animate-fadeIn"
       style={{ animationDelay: `${index * 100}ms` }}
     >
-      <div className="relative h-full bg-gradient-to-br from-gray-900/80 to-gray-900/40 backdrop-blur-md border border-green-500/20 rounded-xl overflow-hidden transition-all duration-500 hover:border-green-400/50 hover:shadow-xl hover:shadow-green-500/10">
-        {/* 動画/サムネイル */}
-        <div className="relative aspect-video overflow-hidden" onClick={handlePlay}>
+      <div className="relative h-full bg-gradient-to-br from-gray-900/80 to-gray-900/40 backdrop-blur-md border border-green-500/20 rounded-2xl overflow-hidden transition-all duration-500 hover:border-green-400/50 hover:shadow-xl hover:shadow-green-500/10">
+        {/* 9:16縦長動画エリア */}
+        <div 
+          className="relative w-full overflow-hidden" 
+          style={{ aspectRatio: '9/16' }}
+          onClick={handlePlay}
+        >
           {/* サムネイル（動画再生前） */}
           <img
             src={video.thumbnail}
@@ -141,7 +145,7 @@ function VideoCard({ video, index }: { video: VideoItem; index: number }) {
           />
 
           {/* グラデーションオーバーレイ */}
-          <div className={`absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/20 to-transparent transition-opacity duration-300 ${isPlaying ? 'opacity-50' : 'opacity-100'}`} />
+          <div className={`absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent transition-opacity duration-300 ${isPlaying ? 'opacity-30' : 'opacity-70'}`} />
           
           {/* 再生/一時停止ボタン */}
           <div className={`absolute inset-0 flex items-center justify-center transition-all duration-400 ${isPlaying ? 'opacity-0 hover:opacity-100' : 'opacity-100'}`}>
@@ -162,7 +166,7 @@ function VideoCard({ video, index }: { video: VideoItem; index: number }) {
           {isPlaying && (
             <button
               onClick={toggleMute}
-              className="absolute bottom-3 right-3 w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white hover:bg-green-500/80 transition-all duration-300 z-10"
+              className="absolute bottom-20 right-3 w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white hover:bg-green-500/80 transition-all duration-300 z-10"
             >
               {isMuted ? (
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
@@ -181,7 +185,7 @@ function VideoCard({ video, index }: { video: VideoItem; index: number }) {
           )}
 
           {/* 再生時間バッジ */}
-          <div className={`absolute bottom-3 left-3 bg-black/80 backdrop-blur-sm px-2.5 py-1 rounded-md text-xs font-medium text-white transition-opacity duration-300 ${isPlaying ? 'opacity-0' : 'opacity-100'}`}>
+          <div className={`absolute top-3 right-3 bg-black/80 backdrop-blur-sm px-2.5 py-1 rounded-md text-xs font-medium text-white transition-opacity duration-300 ${isPlaying ? 'opacity-0' : 'opacity-100'}`}>
             {video.duration}
           </div>
 
@@ -199,26 +203,26 @@ function VideoCard({ video, index }: { video: VideoItem; index: number }) {
               LIVE
             </div>
           )}
-        </div>
 
-        {/* 情報 */}
-        <div className="p-5">
-          <h3 className="text-lg font-bold mb-2 text-white group-hover:text-green-400 transition-colors duration-300 line-clamp-1">
-            {t(video.title)}
-          </h3>
-          <p className="text-gray-400 text-sm leading-relaxed line-clamp-2 mb-4">
-            {t(video.description)}
-          </p>
-          <div className="flex items-center justify-between text-xs text-gray-500">
-            <span className="flex items-center gap-1.5">
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              {video.date}
-            </span>
-            <span className="text-green-400/60 group-hover:text-green-400 transition-colors duration-300 flex items-center gap-1">
-              {isPlaying ? t({ JP: '再生中', EN: 'Playing' }) : t({ JP: 'タップで再生', EN: 'Tap to play' })}
-            </span>
+          {/* 下部情報オーバーレイ */}
+          <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
+            <h3 className="text-lg font-bold mb-1 text-white group-hover:text-green-400 transition-colors duration-300 line-clamp-1">
+              {t(video.title)}
+            </h3>
+            <p className="text-gray-300 text-sm leading-relaxed line-clamp-2 mb-2">
+              {t(video.description)}
+            </p>
+            <div className="flex items-center justify-between text-xs text-gray-400">
+              <span className="flex items-center gap-1.5">
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                {video.date}
+              </span>
+              <span className="text-green-400/80 group-hover:text-green-400 transition-colors duration-300">
+                {isPlaying ? t({ JP: '再生中', EN: 'Playing' }) : t({ JP: 'タップで再生', EN: 'Tap to play' })}
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -226,8 +230,8 @@ function VideoCard({ video, index }: { video: VideoItem; index: number }) {
   )
 }
 
-// フィーチャード動画カード（インライン再生対応）
-function FeaturedVideoCard({ video }: { video: VideoItem }) {
+// フィーチャード縦長動画カード
+function FeaturedVerticalVideoCard({ video }: { video: VideoItem }) {
   const { t } = useLanguage()
   const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(true)
@@ -261,8 +265,8 @@ function FeaturedVideoCard({ video }: { video: VideoItem }) {
   }
 
   return (
-    <div className="group cursor-pointer relative">
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 border border-green-500/30 transition-all duration-500 hover:border-green-400/60 hover:shadow-2xl hover:shadow-green-500/20">
+    <div className="group cursor-pointer relative max-w-md mx-auto">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 border-2 border-green-500/40 transition-all duration-500 hover:border-green-400/60 hover:shadow-2xl hover:shadow-green-500/20">
         {/* フィーチャードバッジ */}
         <div className="absolute top-4 left-4 z-20">
           <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-green-500 to-emerald-400 text-black text-xs font-bold uppercase tracking-wider shadow-lg shadow-green-500/30">
@@ -281,91 +285,92 @@ function FeaturedVideoCard({ video }: { video: VideoItem }) {
           </div>
         )}
 
-        <div className="grid md:grid-cols-5 gap-0">
-          {/* 動画/サムネイル */}
-          <div className="md:col-span-3 relative aspect-video md:aspect-auto md:h-80 overflow-hidden" onClick={handlePlay}>
-            {/* サムネイル */}
-            <img
-              src={video.thumbnail}
-              alt={t(video.title)}
-              className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ${isPlaying ? 'opacity-0 scale-105' : 'opacity-100 scale-100 group-hover:scale-110'}`}
-            />
-            
-            {/* 動画プレーヤー */}
-            <video
-              ref={videoRef}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isPlaying ? 'opacity-100' : 'opacity-0'}`}
-              src={video.videoUrl}
-              muted={isMuted}
-              playsInline
-              onEnded={handleVideoEnd}
-              preload="metadata"
-            />
+        {/* 9:16縦長動画エリア */}
+        <div 
+          className="relative w-full overflow-hidden" 
+          style={{ aspectRatio: '9/16', maxHeight: '70vh' }}
+          onClick={handlePlay}
+        >
+          {/* サムネイル */}
+          <img
+            src={video.thumbnail}
+            alt={t(video.title)}
+            className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ${isPlaying ? 'opacity-0 scale-105' : 'opacity-100 scale-100 group-hover:scale-105'}`}
+          />
+          
+          {/* 動画プレーヤー */}
+          <video
+            ref={videoRef}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isPlaying ? 'opacity-100' : 'opacity-0'}`}
+            src={video.videoUrl}
+            muted={isMuted}
+            playsInline
+            onEnded={handleVideoEnd}
+            preload="metadata"
+          />
 
-            {/* グラデーションオーバーレイ */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-gray-900/90 hidden md:block" />
-            <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent md:hidden" />
-            
-            {/* 再生/一時停止ボタン */}
-            <div className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${isPlaying ? 'opacity-0 hover:opacity-100' : 'opacity-100'}`}>
-              <div className="w-20 h-20 rounded-full bg-green-500/90 flex items-center justify-center backdrop-blur-sm transform transition-transform duration-300 hover:scale-110 shadow-xl shadow-green-500/40">
-                {isPlaying ? (
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" className="w-10 h-10">
-                    <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
-                  </svg>
-                ) : (
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" className="w-10 h-10 ml-1">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                )}
-              </div>
-            </div>
-
-            {/* ミュートボタン */}
-            {isPlaying && (
-              <button
-                onClick={toggleMute}
-                className="absolute bottom-4 right-4 md:right-auto md:left-4 w-12 h-12 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white hover:bg-green-500/80 transition-all duration-300 z-10"
-              >
-                {isMuted ? (
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-                    <path d="M4 9v6h3l4 3V6l-4 3H4z" />
-                    <line x1="16" y1="9" x2="20" y2="13" />
-                    <line x1="20" y1="9" x2="16" y2="13" />
-                  </svg>
-                ) : (
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-                    <path d="M4 9v6h3l4 3V6l-4 3H4z" />
-                    <path d="M16 9a4 4 0 0 1 0 6" />
-                    <path d="M18.5 7.5a7 7 0 0 1 0 9" />
-                  </svg>
-                )}
-              </button>
-            )}
-
-            {/* 再生時間 */}
-            <div className={`absolute bottom-4 left-4 md:bottom-4 md:left-4 bg-black/80 backdrop-blur-sm px-3 py-1.5 rounded-lg text-sm font-medium text-white flex items-center gap-2 transition-opacity duration-300 ${isPlaying ? 'opacity-0' : 'opacity-100'}`}>
-              <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              {video.duration}
+          {/* グラデーションオーバーレイ */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+          
+          {/* 再生/一時停止ボタン */}
+          <div className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${isPlaying ? 'opacity-0 hover:opacity-100' : 'opacity-100'}`}>
+            <div className="w-20 h-20 rounded-full bg-green-500/90 flex items-center justify-center backdrop-blur-sm transform transition-transform duration-300 hover:scale-110 shadow-xl shadow-green-500/40">
+              {isPlaying ? (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" className="w-10 h-10">
+                  <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" className="w-10 h-10 ml-1">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              )}
             </div>
           </div>
 
-          {/* 情報 */}
-          <div className="md:col-span-2 p-6 md:p-8 flex flex-col justify-center">
-            <div className="mb-4">
+          {/* ミュートボタン */}
+          {isPlaying && (
+            <button
+              onClick={toggleMute}
+              className="absolute bottom-32 right-4 w-12 h-12 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white hover:bg-green-500/80 transition-all duration-300 z-10"
+            >
+              {isMuted ? (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+                  <path d="M4 9v6h3l4 3V6l-4 3H4z" />
+                  <line x1="16" y1="9" x2="20" y2="13" />
+                  <line x1="20" y1="9" x2="16" y2="13" />
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+                  <path d="M4 9v6h3l4 3V6l-4 3H4z" />
+                  <path d="M16 9a4 4 0 0 1 0 6" />
+                  <path d="M18.5 7.5a7 7 0 0 1 0 9" />
+                </svg>
+              )}
+            </button>
+          )}
+
+          {/* 再生時間 */}
+          <div className={`absolute top-4 right-4 bg-black/80 backdrop-blur-sm px-3 py-1.5 rounded-lg text-sm font-medium text-white flex items-center gap-2 transition-opacity duration-300 ${isPlaying ? 'opacity-0' : 'opacity-100'}`}>
+            <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            {video.duration}
+          </div>
+
+          {/* 下部情報 */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/80 to-transparent">
+            <div className="mb-3">
               <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-green-500/20 text-green-400 border border-green-500/30">
                 {t(categories.find(c => c.id === video.category)?.label || { JP: '', EN: '' })}
               </span>
             </div>
-            <h3 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-green-400 via-emerald-300 to-green-400 bg-clip-text text-transparent">
+            <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-green-400 via-emerald-300 to-green-400 bg-clip-text text-transparent">
               {t(video.title)}
             </h3>
-            <p className="text-gray-400 text-base leading-relaxed mb-6 line-clamp-3">
+            <p className="text-gray-300 text-sm leading-relaxed mb-4 line-clamp-2">
               {t(video.description)}
             </p>
-            <div className="flex items-center gap-4 text-sm text-gray-500">
+            <div className="flex items-center gap-4 text-sm text-gray-400">
               <span className="flex items-center gap-1.5">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -468,58 +473,58 @@ export default function GalleryPage() {
       <div className="relative pt-24 pb-20">
         <div className="container mx-auto px-4">
           {/* ヒーローセクション */}
-          <div className="text-center mb-16 pt-8">
-            <div className="mb-8 animate-float">
+          <div className="text-center mb-12 pt-8">
+            <div className="mb-6 animate-float">
               <Image
                 src="/mazavege_logo_midori.png"
                 alt="Mother Vegetable Logo"
-                width={100}
-                height={100}
+                width={80}
+                height={80}
                 className="mx-auto drop-shadow-[0_0_30px_rgba(74,222,128,0.3)]"
               />
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tight">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4 tracking-tight">
               <span className="bg-gradient-to-r from-green-400 via-emerald-300 to-green-500 bg-clip-text text-transparent drop-shadow-lg">
                 {t({ JP: 'マザベジアニメ', EN: 'Mazavege Anime' })}
               </span>
               <br />
-              <span className="text-white/90 text-3xl md:text-4xl lg:text-5xl font-light">
+              <span className="text-white/90 text-2xl md:text-3xl lg:text-4xl font-light">
                 {t({ JP: 'ギャラリー', EN: 'Gallery' })}
               </span>
             </h1>
-            <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+            <p className="text-gray-400 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
               {t({
-                JP: 'マザーベジタブルの世界観を伝えるアニメーションコレクション',
-                EN: 'Animation collection conveying the world of Mother Vegetable'
+                JP: '9:16縦長フォーマットのアニメーションコレクション',
+                EN: 'Animation collection in 9:16 vertical format'
               })}
             </p>
-            <p className="text-green-400/80 text-sm mt-4">
+            <p className="text-green-400/80 text-sm mt-3">
               {t({
                 JP: '※ タップすると動画が再生されます',
                 EN: '※ Tap to play video'
               })}
             </p>
             {/* 装飾ライン */}
-            <div className="mt-8 flex items-center justify-center gap-2">
-              <div className="w-16 h-0.5 bg-gradient-to-r from-transparent to-green-500/50" />
+            <div className="mt-6 flex items-center justify-center gap-2">
+              <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-green-500/50" />
               <div className="w-2 h-2 rounded-full bg-green-500" />
-              <div className="w-16 h-0.5 bg-gradient-to-l from-transparent to-green-500/50" />
+              <div className="w-12 h-0.5 bg-gradient-to-l from-transparent to-green-500/50" />
             </div>
           </div>
 
           {/* カテゴリフィルター */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
+          <div className="flex flex-wrap justify-center gap-2 mb-10">
             {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`group relative px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                className={`group relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                   selectedCategory === category.id
                     ? 'bg-gradient-to-r from-green-500 to-emerald-400 text-black shadow-lg shadow-green-500/30'
                     : 'bg-gray-900/60 text-gray-300 hover:text-white border border-green-500/20 hover:border-green-400/40 hover:bg-gray-800/60'
                 }`}
               >
-                <span className="flex items-center gap-2">
+                <span className="flex items-center gap-1.5">
                   <span className={`transition-transform duration-300 ${selectedCategory === category.id ? 'scale-110' : 'group-hover:scale-110'}`}>
                     {category.icon}
                   </span>
@@ -532,14 +537,14 @@ export default function GalleryPage() {
           {/* フィーチャード動画 */}
           {featuredVideo && selectedCategory === 'all' && (
             <div className="mb-12">
-              <FeaturedVideoCard video={featuredVideo} />
+              <FeaturedVerticalVideoCard video={featuredVideo} />
             </div>
           )}
 
-          {/* 動画グリッド */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {/* 縦長動画グリッド - 2列または3列 */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
             {filteredVideos.map((video, index) => (
-              <VideoCard
+              <VerticalVideoCard
                 key={video.id}
                 video={video}
                 index={index}
@@ -565,18 +570,18 @@ export default function GalleryPage() {
           )}
 
           {/* 追加予定のお知らせ */}
-          <div className="mt-20 text-center">
+          <div className="mt-16 text-center">
             <div className="inline-block relative">
               <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 via-emerald-500/20 to-green-500/20 rounded-2xl blur-xl" />
-              <div className="relative bg-gray-900/80 backdrop-blur-md border border-green-500/30 rounded-2xl p-8 md:p-10">
-                <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="relative bg-gray-900/80 backdrop-blur-md border border-green-500/30 rounded-2xl p-6 md:p-8">
+                <div className="flex items-center justify-center gap-3 mb-3">
                   <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  <h3 className="text-green-400 text-xl md:text-2xl font-bold">
+                  <h3 className="text-green-400 text-lg md:text-xl font-bold">
                     {t({ JP: '新しいアニメを準備中！', EN: 'New animations coming soon!' })}
                   </h3>
                   <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                 </div>
-                <p className="text-gray-400 text-base md:text-lg">
+                <p className="text-gray-400 text-sm md:text-base">
                   {t({
                     JP: 'マザベジちゃんの冒険はまだまだ続きます。お楽しみに！',
                     EN: "Mazavege-chan's adventures continue. Stay tuned!"
@@ -590,17 +595,17 @@ export default function GalleryPage() {
 
       {/* フッター */}
       <footer className="relative bg-black border-t border-green-500/20">
-        <div className="container mx-auto px-4 py-10">
+        <div className="container mx-auto px-4 py-8">
           <div className="text-center">
-            <div className="w-full h-px bg-gradient-to-r from-transparent via-green-500/50 to-transparent mb-6" />
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-green-500/50 to-transparent mb-4" />
             <Image
               src="/mazavege_logo_midori.png"
               alt="Mother Vegetable Logo"
-              width={40}
-              height={40}
-              className="mx-auto mb-3 opacity-80"
+              width={32}
+              height={32}
+              className="mx-auto mb-2 opacity-80"
             />
-            <p className="text-green-500/80 text-sm">
+            <p className="text-green-500/80 text-xs">
               © 2025 MOTHER VEGETABLE PROJECT. All rights reserved.
             </p>
           </div>
@@ -614,12 +619,12 @@ export default function GalleryPage() {
           <img
             src="/mazavegechan.gif"
             alt="Mazavege-chan"
-            className="relative w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-green-500/30 group-hover:border-green-400/50 transition-all duration-300"
+            className="relative w-14 h-14 md:w-16 md:h-16 rounded-full border-2 border-green-500/30 group-hover:border-green-400/50 transition-all duration-300"
           />
         </div>
-        <div className="text-white text-xs text-center mt-2 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-          <p className="font-medium">Mazavege-chan</p>
-          <p className="text-green-400/80 text-[10px]">AI Agent Coming Soon!!</p>
+        <div className="text-white text-xs text-center mt-1 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+          <p className="font-medium text-[10px]">Mazavege-chan</p>
+          <p className="text-green-400/80 text-[8px]">AI Agent Coming Soon!!</p>
         </div>
       </div>
     </main>
